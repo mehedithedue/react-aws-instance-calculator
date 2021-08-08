@@ -1,0 +1,409 @@
+{
+  "R6g": {
+    "title": [
+      "r6g.medium",
+      "r6g.large",
+      "r6g.xlarge",
+      "r6g.2xlarge",
+      "r6g.4xlarge",
+      "r6g.8xlarge",
+      "r6g.12xlarge",
+      "r6g.16xlarge",
+      "r6g.metal"
+    ],
+    "vcpu": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      48,
+      64,
+      64
+    ],
+    "memory": [
+      8,
+      16,
+      32,
+      64,
+      128,
+      256,
+      384,
+      512,
+      512
+    ]
+  },
+  "R6gd": {
+    "title": [
+      "r6gd.medium",
+      "r6gd.large",
+      "r6gd.xlarge",
+      "r6gd.2xlarge",
+      "r6gd.4xlarge",
+      "r6gd.8xlarge",
+      "r6gd.12xlarge",
+      "r6gd.16xlarge",
+      "r6gd.metal"
+    ],
+    "vcpu": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      48,
+      64,
+      64
+    ],
+    "memory": [
+      8,
+      16,
+      32,
+      64,
+      128,
+      256,
+      384,
+      512,
+      512
+    ]
+  },
+  "R5": {
+    "title": [
+      "r5.large",
+      "r5.xlarge",
+      "r5.2xlarge",
+      "r5.4xlarge",
+      "r5.8xlarge",
+      "r5.12xlarge",
+      "r5.16xlarge",
+      "r5.24xlarge",
+      "r5.metal"
+    ],
+    "vcpu": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      48,
+      64,
+      96,
+      96
+    ],
+    "memory": [
+      16,
+      32,
+      64,
+      128,
+      256,
+      384,
+      512,
+      768,
+      768
+    ]
+  },
+  "R5d": {
+    "title": [
+      "r5d.large",
+      "r5d.xlarge",
+      "r5d.2xlarge",
+      "r5d.4xlarge",
+      "r5d.8xlarge",
+      "r5d.12xlarge",
+      "r5d.16xlarge",
+      "r5d.24xlarge",
+      "r5d.metal"
+    ],
+    "vcpu": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      48,
+      64,
+      96,
+      96
+    ],
+    "memory": [
+      16,
+      32,
+      64,
+      128,
+      256,
+      384,
+      512,
+      768,
+      768
+    ]
+  },
+  "R5a": {
+    "title": [
+      "r5a.large",
+      "r5a.xlarge",
+      "r5a.2xlarge",
+      "r5a.4xlarge",
+      "r5a.8xlarge",
+      "r5a.12xlarge",
+      "r5a.16xlarge",
+      "r5a.24xlarge"
+    ],
+    "vcpu": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      48,
+      64,
+      96
+    ],
+    "memory": [
+      16,
+      32,
+      64,
+      128,
+      256,
+      384,
+      512,
+      768
+    ]
+  },
+  "R5b": {
+    "title": [
+      "r5b.large",
+      "r5b.xlarge",
+      "r5b.2xlarge",
+      "r5b.4xlarge",
+      "r5b.8xlarge",
+      "r5b.12xlarge",
+      "r5b.16xlarge",
+      "r5b.24xlarge",
+      "r5b.metal"
+    ],
+    "vcpu": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      48,
+      64,
+      96,
+      96
+    ],
+    "memory": [
+      16,
+      32,
+      64,
+      128,
+      256,
+      384,
+      512,
+      768,
+      768
+    ]
+  },
+  "R5n": {
+    "title": [
+      "r5n.large",
+      "r5n.xlarge",
+      "r5n.2xlarge",
+      "r5n.4xlarge",
+      "r5n.8xlarge",
+      "r5n.12xlarge",
+      "r5n.16xlarge",
+      "r5n.24xlarge",
+      "r5n.metal"
+    ],
+    "vcpu": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      48,
+      64,
+      96,
+      96
+    ],
+    "memory": [
+      16,
+      32,
+      64,
+      128,
+      256,
+      384,
+      512,
+      768,
+      768
+    ]
+  },
+  "R5dn": {
+    "title": [
+      "r5dn.large",
+      "r5dn.xlarge",
+      "r5dn.2xlarge",
+      "r5dn.4xlarge",
+      "r5dn.8xlarge",
+      "r5dn.12xlarge",
+      "r5dn.16xlarge",
+      "r5dn.24xlarge",
+      "r5dn.metal"
+    ],
+    "vcpu": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      48,
+      64,
+      96,
+      96
+    ],
+    "memory": [
+      16,
+      32,
+      64,
+      128,
+      256,
+      384,
+      512,
+      768,
+      768
+    ]
+  },
+  "R4": {
+    "title": [
+      "r4.large",
+      "r4.xlarge",
+      "r4.2xlarge",
+      "r4.4xlarge",
+      "r4.8xlarge",
+      "r4.16xlarge"
+    ],
+    "vcpu": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "memory": [
+      15.25,
+      30.5,
+      61,
+      122,
+      244,
+      488
+    ]
+  },
+  "X2gd": {
+    "title": [
+      "x2gd.medium",
+      "x2gd.large",
+      "x2gd.xlarge",
+      "x2gd.2xlarge",
+      "x2gd.4xlarge",
+      "x2gd.8xlarge",
+      "x2gd.12xlarge",
+      "x2gd.16xlarge",
+      "x2gd.metal"
+    ],
+    "vcpu": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      48,
+      64,
+      64
+    ],
+    "memory": [
+      16,
+      32,
+      64,
+      128,
+      256,
+      512,
+      768,
+      1024,
+      1024
+    ]
+  },
+  "X1e": {
+    "title": [
+      "x1e.xlarge",
+      "x1e.2xlarge",
+      "x1e.4xlarge",
+      "x1e.8xlarge",
+      "x1e.16xlarge",
+      "x1e.32xlarge"
+    ],
+    "vcpu": [
+      4,
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "memory": [
+      122,
+      244,
+      488,
+      976,
+      1952,
+      3904
+    ]
+  },
+  "X1": {
+    "title": [
+      "x1.16xlarge",
+      "x1.32xlarge"
+    ],
+    "vcpu": [
+      64,
+      128
+    ],
+    "memory": [
+      976,
+      1956
+    ]
+  },
+  "Z1d": {
+    "title": [
+      "z1d.large",
+      "z1d.xlarge",
+      "z1d.2xlarge",
+      "z1d.3xlarge",
+      "z1d.6xlarge",
+      "z1d.12xlarge",
+      "z1d.metal"
+    ],
+    "vcpu": [
+      2,
+      4,
+      8,
+      12,
+      24,
+      48,
+      48
+    ],
+    "memory": [
+      16,
+      32,
+      64,
+      96,
+      194,
+      384,
+      384
+    ]
+  }
+}

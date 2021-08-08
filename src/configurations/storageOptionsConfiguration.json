@@ -1,0 +1,42 @@
+[
+  {
+    "value": "storage.gp3",
+    "price": 0.088,
+    "label": "General Purpose SSD (gp3) - Storage"
+  },
+  {
+    "value": "throughput.gp3",
+    "price": 0.044,
+    "label": "General Purpose SSD (gp3) - Throughput"
+  },
+  {
+    "value": "volumes.gp2",
+    "price": 0.11,
+    "label": "General Purpose SSD (gp2) Volumes"
+  },
+  {
+    "value": "storage.io2",
+    "price": 0.138,
+    "label": "Provisioned IOPS SSD (io2) - Storage"
+  },
+  {
+    "value": "iops.io2",
+    "price": 0.138,
+    "label": "Provisioned IOPS SSD (io2) - IOPS"
+  },
+  {
+    "value": "volumes.io1",
+    "price": 0.072,
+    "label": "Provisioned IOPS SSD (io1) Volumes"
+  },
+  {
+    "value": "volumes.st1",
+    "price": 0.05,
+    "label": "Throughput Optimized HDD (st1) Volumes"
+  },
+  {
+    "value": "volumes.sc1",
+    "price": 0.0168,
+    "label": "Cold HDD (sc1) Volumes"
+  }
+]

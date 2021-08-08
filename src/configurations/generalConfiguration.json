@@ -1,0 +1,62 @@
+{
+  "T4g": {
+    "title": ["t4g.nano", "t4g.micro", "t4g.small", "t4g.medium", "t4g.large", "t4g.xlarge", "t4g.2xlarge"],
+    "vcpu": [2, 2, 2, 2, 2, 4, 8],
+    "memory": [0.5, 1, 2, 4, 8, 16, 32]
+  },
+  "T3": {
+    "title": ["t3.nano", "t3.micro", "t3.small", "t3.medium", "t3.large", "t3.xlarge", "t3.2xlarge"],
+    "vcpu": [2, 2, 2, 2, 2, 4, 8],
+    "memory": [0.5, 1, 2, 4, 8, 16, 32]
+  },
+  "T3a": {
+    "title": ["t3a.nano", "t3a.micro", "t3a.small", "t3a.medium", "t3a.large", "t3a.xlarge", "t3a.2xlarge"],
+    "vcpu": [2, 2, 2, 2, 2, 4, 8],
+    "memory": [0.5, 1, 2, 4, 8, 16, 32]
+  },
+  "T2": {
+    "title": ["t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "t2.xlarge", "t2.2xlarge"],
+    "vcpu": [1, 1, 1, 2, 2, 4, 8],
+    "memory": [0.5, 1, 2, 4, 8, 16, 32]
+  },
+  "M6g": {
+    "title": ["m6g.medium", "m6g.large", "m6g.xlarge", "m6g.2xlarge", "m6g.4xlarge", "m6g.8xlarge", "m6g.12xlarge", "m6g.16xlarge", "m6g.metal", "m6gd.medium", "m6gd.large", "m6gd.xlarge", "m6gd.2xlarge", "m6gd.4xlarge", "m6gd.8xlarge", "m6gd.12xlarge", "m6gd.16xlarge", "m6gd.metal"],
+    "vcpu": [1, 2, 4, 8, 16, 32, 48, 64, 64, 1, 2, 4, 8, 16, 32, 48, 64, 64],
+    "memory": [4, 8, 16, 32, 64, 128, 192, 256, 256,4, 8, 16, 32, 64, 128, 192, 256, 256]
+  },
+  "M5": {
+    "title": ["m5.large", "m5.xlarge", "m5.2xlarge", "m5.4xlarge", "m5.8xlarge", "m5.12xlarge", "m5.16xlarge", "m5.24xlarge", "m5.metal", "m5d.large", "m5d.xlarge", "m5d.2xlarge", "m5d.4xlarge", "m5d.8xlarge", "m5d.12xlarge", "m5d.16xlarge", "m5d.24xlarge", "m5d.metal"],
+    "vcpu": [2, 4, 8, 16, 32, 48, 64, 96, 96, 2, 4, 8, 16, 32, 48, 64, 96, 96],
+    "memory": [8, 16, 32, 64, 128, 192, 256, 384, 384, 8, 16, 32, 64, 128, 192, 256, 384, 384]
+  },
+  "M5a": {
+    "title": ["m5a.large", "m5a.xlarge", "m5a.2xlarge", "m5a.4xlarge", "m5a.8xlarge", "m5a.12xlarge", "m5a.16xlarge", "m5a.24xlarge", "m5ad.large", "m5ad.xlarge", "m5ad.2xlarge", "m5ad.4xlarge", "m5ad.8xlarge", "m5ad.12xlarge", "m5ad.16xlarge", "m5ad.24xlarge"],
+    "vcpu": [2, 4, 8, 16, 32, 48, 64, 96, 2, 4, 8, 16, 32, 48, 64, 96],
+    "memory": [8, 16, 32, 48, 64, 128, 192, 256, 384, 8, 16, 32, 48, 64, 128, 192, 256, 384]
+  },
+  "M5n": {
+    "title": ["m5n.large", "m5n.xlarge", "m5n.2xlarge", "m5n.4xlarge", "m5n.8xlarge", "m5n.12xlarge", "m5n.16xlarge", "m5n.24xlarge", "m5n.metal", "m5dn.large", "m5dn.xlarge", "m5dn.2xlarge", "m5dn.4xlarge", "m5dn.8xlarge", "m5dn.12xlarge", "m5dn.16xlarge", "m5dn.24xlarge", "m5dn.metal"],
+    "vcpu": [2, 4, 8, 16, 32, 48, 64, 96, 96, 2, 4, 8, 16, 32, 48, 64, 96, 96],
+    "memory": [8, 16, 32, 48, 64, 128, 192, 256, 384, 384, 8, 16, 32, 48, 64, 128, 192, 256, 384, 384]
+  },
+  "M5zn": {
+    "title": ["m5n.large", "m5n.xlarge", "m5n.2xlarge", "m5n.4xlarge", "m5n.8xlarge", "m5n.12xlarge", "m5n.16xlarge", "m5n.24xlarge", "m5n.metal", "m5dn.large", "m5dn.xlarge", "m5dn.2xlarge", "m5dn.4xlarge", "m5dn.8xlarge", "m5dn.12xlarge", "m5dn.16xlarge", "m5dn.24xlarge", "m5dn.metal"],
+    "vcpu": [2, 4, 8, 12, 24, 48, 48],
+    "memory": [8, 16, 32, 48, 96, 192, 192]
+  },
+  "M4": {
+    "title": ["m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "m4.16xlarge"],
+    "vcpu": [2, 4, 8, 16, 40, 64],
+    "memory": [8, 16, 32, 64, 160, 256]
+  },
+  "A1": {
+    "title": ["a1.medium", "a1.large", "a1.xlarge", "a1.2xlarge", "a1.4xlarge", "a1.metal"],
+    "vcpu": [1, 2, 4, 8, 16, 16],
+    "memory": [2, 4, 8, 16, 32, 32]
+  },
+  "Mac1": {
+    "title": ["mac1.metal"],
+    "vcpu": [12],
+    "memory": [32]
+  }
+}

@@ -1,0 +1,124 @@
+html {
+    font-size: 17px;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+}
+
+p {
+    font-size: 2rem;
+    margin-bottom: -10px !important;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+small {
+    font-weight: lighter;
+    color: gray;
+    margin: 0;
+}
+
+.flex {
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-cost {
+    padding-top: 15px;
+    justify-content: space-between;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    width: 25rem;
+    margin: 20vh auto;
+    box-shadow: 15px 20px 70px -10px;
+}
+
+.input-range__label--max {
+    display: none;
+}
+
+.input-range__label--min {
+    display: none;
+}
+
+.input-range__label-container {
+    left: -50%;
+    position: relative;
+    display: none;
+}
+
+.configuration-select {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.configuration-select .select-option.active {
+    background-color: #fff;
+    border-color: #a0a0a0;
+    -webkit-box-shadow: 0 3px 3px 1px rgba(8, 4, 55, .05);
+    box-shadow: 0 3px 3px 1px rgba(8, 4, 55, .05);
+    margin-top: -1px;
+    z-index: 5;
+}
+
+.configuration-select .select-option {
+    background-color: #f1f1f1;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: #031b4e;
+    cursor: pointer;
+    flex-basis: 50%;
+    font-size: 10px;
+    padding: 2px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.configuration-select .react-select__indicators .react-select__indicator {
+    display: none !important;
+}
+
+.configuration-select .react-select__value-container {
+    padding: 2px !important;
+}
+
+.configuration-select .react-select__placeholder {
+    cursor: pointer !important;
+}
+
+.storage-block {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.storage-block .header {
+    flex-basis: 40%;
+}
+
+.storage-block .header h4 {
+    text-align: left !important;
+}
+
+.storage-block .storage-options {
+    flex-basis: 60%;
+    margin-top: 1.9em
+}
