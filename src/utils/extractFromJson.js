@@ -2,8 +2,7 @@
 * To formate and extract the price from large API response of AWS
 * */
 const extractPriceFromJsonAPI = ( response => {
-    let data = response.terms && response.terms.OnDemand;
-    delete response.PriceList;
+    let data = response && response.OnDemand;
 
     if(!data) return 0;
     let priceDimentions = {};
@@ -17,10 +16,21 @@ const extractPriceFromJsonAPI = ( response => {
     for (let key in priceDimentions) {
         let description = priceDimentions && priceDimentions[key] && priceDimentions[key]['description'];
         let price = priceDimentions && priceDimentions[key] && priceDimentions[key]['pricePerUnit'];
-        priceObject = {...price, description}
+        let unit = priceDimentions && priceDimentions[key] && priceDimentions[key]['unit'];
+        priceObject = {...price, description, unit}
         break;
     }
     return priceObject ;
+})
+
+const extractNameFromJsonAPI = ( response => {
+    let data = response && response.attributes;
+
+    if(!data) return '';
+
+    let product = data && `${data.tenancy} ${data.instanceType} instance`
+
+    return product || 'No Product found'
 })
 
 const extractNameFromConfiguration = ( configuration => {
@@ -35,4 +45,4 @@ const extractNameFromConfiguration = ( configuration => {
     return names;
 })
 
-export {extractPriceFromJsonAPI, extractNameFromConfiguration} ;
+export {extractPriceFromJsonAPI, extractNameFromJsonAPI,  extractNameFromConfiguration} ;

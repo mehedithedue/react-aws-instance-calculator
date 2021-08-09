@@ -8,7 +8,7 @@ body {
 
 p {
     font-size: 2rem;
-    margin-bottom: -10px !important;
+    margin-bottom: -8px !important;
 }
 
 h4 {
@@ -121,4 +121,26 @@ small {
 .storage-block .storage-options {
     flex-basis: 60%;
     margin-top: 1.9em
+}
+
+.configuration-select button.active {
+    background-color: #fff;
+    border-color: #a0a0a0;
+    -webkit-box-shadow: 0 3px 3px 1px rgba(8, 4, 55, .05);
+    box-shadow: 0 3px 3px 1px rgba(8, 4, 55, .05);
+    margin-top: -1px;
+    z-index: 5;
+}
+.configuration-select button {
+    background-color: #f1f1f1;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: #031b4e;
+    cursor: pointer;
+    flex-basis: 50%;
+    font-size: 12px;
+    padding: 5px;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 600;
 }

@@ -1,10 +1,8 @@
 import React, {Component} from "react";
 import InputRange from "react-input-range";
-import Display from "./Display";
 import DisplayConfig from "./DisplayConfig";
 import "../styles/Calculator.css";
 import "react-input-range/lib/css/index.css";
-import AWSCostDisplay from "./AWSCostDisplay";
 import GeneralPurposeConfiguration from "./configuration-dropdown/GeneralPurposeConfiguration";
 import MemoryOptimizedConfiguration from "./configuration-dropdown/MemoryOptimizedConfiguration";
 import AcceleratedComputeConfiguration from "./configuration-dropdown/AcceleratedComputeConfiguration";
@@ -12,121 +10,181 @@ import ComputeOptimizedConfiguration from "./configuration-dropdown/ComputeOptim
 import StorageOptimizedConfiguration from "./configuration-dropdown/StorageOptimizedConfiguration";
 import StorageHeadingAndOptionsDisplay from "./StorageHeadingAndOptionsDisplay";
 import storageOptionsConfiguration from "../configurations/storageOptionsConfiguration.json";
+import configuration from "../configurations/initialCpuAndMemoryConfiguration.json"
+import {getPriceInstanceListFromAWS} from "../utils/priceCalculatorEngineAWS";
+import {getSortAndUniqueArray} from "../helper/helper";
+import AWSInstanceDisplay from "./AWSInstanceDisplay";
 
 class Calculator extends Component {
+    generalConfiguration = configuration.generalPurposeConfiguration;
+    storageTypeOptions = storageOptionsConfiguration;
     state = {
         storageValue: 0,
         transferValue: 1,
-        cpuValue: 0,
-        memoryValue: 0.5,
-        configCpuValues: [2, 2, 2, 2, 2, 4, 8],
-        configMemoryValues: [0.5, 1, 2, 4, 8, 16, 32],
-        configTitles: ["t4g.nano", "t4g.micro", "t4g.small", "t4g.medium", "t4g.large", "t4g.xlarge", "t4g.2xlarge"],
+        cpuValue: this.generalConfiguration.vcpu[0],
+        memoryValue: this.generalConfiguration.memory[0],
+        cpuMemorySlider: 0,
+        configCpuValues: this.generalConfiguration.vcpu,
+        configMemoryValues: this.generalConfiguration.memory,
+        configTitles: this.generalConfiguration.title,
         instanceType: 'T4g',
-        configuration: 'general',
+        instanceFamily: 'General purpose',
         storagePriceGBPerMonth: 0.088,
-        storageTypeEBSVolume : "storage.gp3"
+        storageTypeEBSVolume: "storage.gp3",
+        configPriceValues: [0, 1],
+        priceSlider: 0,
+        awsResponseWithPrice: []
 
     };
 
-    storageTypeOptions = storageOptionsConfiguration;
 
     storageValueChange = value => {
         this.setState({storageValue: value});
     };
-    handleCpuChange = value => {
-        this.setState({cpuValue: value});
+    handlePriceSliderChange = value => {
+        value = parseInt(value)
+        this.setState({priceSlider: value});
     };
-    handleInstanceTypeSelected = value => {
-        this.setState({instanceType: value});
-        this.setState({cpuValue: 0});
+    handleCpuMemorySliderChange = value => {
+        value = parseInt(value)
+        let vcpu = this.state.configCpuValues[value]
+        let memory = this.state.configMemoryValues[value]
+        this.setState({cpuMemorySlider: value});
+        this.changeCpuValue(vcpu)
+        this.changeMemoryValue(memory)
+
+        this.getAwsPriceInstanceByAPI({
+            instanceFamily: this.state.instanceFamily,
+            vcpu: vcpu,
+            memory: memory,
+        });
     };
 
-    handleConfigurationChanged = value => {
-        this.setState({configuration: value});
-    };
-    handleChangedConfig = value => {
-        this.setState({configTitles: value['title']});
-        this.setState({configCpuValues: value['vcpu']});
-        this.setState({configMemoryValues: value['memory']});
+    handleChangedConfig = (value, configuration) => {
+        let titleArray = configuration['title'];
+        let cpuArray = configuration['vcpu'];
+        let memoryArray = configuration['memory'];
+
+        this.setState({instanceFamily: value});
+        this.setState({configTitles: titleArray});
+        this.setState({configCpuValues: cpuArray});
+        this.setState({configMemoryValues: memoryArray});
+
+        this.setState({cpuMemorySlider: 0});
+        this.setState({priceSlider: 0});
+        cpuArray && this.changeCpuValue(cpuArray[0])
+        memoryArray && this.changeMemoryValue(memoryArray[0])
+        this.setState({cpuMemorySlider: 0});
+        this.changeCpuValue(cpuArray[0])
+        this.changeMemoryValue(memoryArray[0])
+
+        this.getAwsPriceInstanceByAPI({
+            instanceFamily: value,
+            vcpu: cpuArray[0],
+            memory: memoryArray[0],
+        });
     };
     handleStoragePriceGBPerMonthChange = value => {
         this.setState({storagePriceGBPerMonth: parseFloat(value)});
     };
     handleStorageTypeEBSVolumeChange = value => {
-        let storeObject = this.storageTypeOptions.find( (store => store.value === value));
+        let storeObject = this.storageTypeOptions.find((store => store.value === value));
         storeObject && storeObject.price && this.handleStoragePriceGBPerMonthChange(storeObject.price);
         this.setState({storageTypeEBSVolume: value});
         this.storageValueChange(0);
     };
-    componentDidMount() {}
+
+    getAwsPriceInstanceByAPI = formParam => {
+        getPriceInstanceListFromAWS(formParam).then( data => {
+            data.prices && this.setState({configPriceValues: (getSortAndUniqueArray(data.prices))})
+            data.result && this.setState({awsResponseWithPrice: data.result})
+            this.setState({priceSlider: 0});
+        })
+    }
+    changeCpuValue = (cpuValue) => this.setState({cpuValue: cpuValue});
+    changeMemoryValue = (memoryValue) => this.setState({memoryValue: memoryValue});
+
+
+    componentDidMount() {
+        this.getAwsPriceInstanceByAPI({
+            instanceFamily: this.state.instanceFamily,
+            vcpu: this.generalConfiguration.vcpu[0],
+            memory: this.generalConfiguration.memory[0],
+        })
+    }
+    /*
     componentDidUpdate() {}
+    */
 
     render() {
         const {
-            storageValue,
-            transferValue,
             cpuValue,
-            configCpuValues,
-            configMemoryValues,
+            memoryValue,
+            cpuMemorySlider,
             configTitles,
-            storagePriceGBPerMonth
+            configPriceValues,
+            configCpuValues,
+            priceSlider,
+            awsResponseWithPrice,
         } = this.state;
         return (
             <div className="App">
                 <div className="configuration-select">
                     <GeneralPurposeConfiguration
-                        active={this.state.configuration  === 'general'}
-                        handleChangeInstanceType={this.handleInstanceTypeSelected}
-                        handleChangedConfiguration={this.handleConfigurationChanged}
+                        instanceFamily={this.state.instanceFamily}
                         handleChangedConfig={this.handleChangedConfig}
-                        instanceType={this.state.instanceType}
-                    />
-                    <AcceleratedComputeConfiguration
-                        active={this.state.configuration  === 'accelerated'}
-                        handleChangeInstanceType={this.handleInstanceTypeSelected}
-                        handleChangedConfiguration={this.handleConfigurationChanged}
-                        handleChangedConfig={this.handleChangedConfig}
-                        instanceType={this.state.instanceType}
-                    />
-                    <MemoryOptimizedConfiguration
-                        active={this.state.configuration  === 'memory'}
-                        handleChangeInstanceType={this.handleInstanceTypeSelected}
-                        handleChangedConfiguration={this.handleConfigurationChanged}
-                        handleChangedConfig={this.handleChangedConfig}
-                        instanceType={this.state.instanceType}
-                    />
-                    <StorageOptimizedConfiguration
-                        active={this.state.configuration  === 'compute'}
-                        handleChangeInstanceType={this.handleInstanceTypeSelected}
-                        handleChangedConfiguration={this.handleConfigurationChanged}
-                        handleChangedConfig={this.handleChangedConfig}
-                        instanceType={this.state.instanceType}
+                        name={`General purpose`}
                     />
                     <ComputeOptimizedConfiguration
-                        active={this.state.configuration  === 'compute'}
-                        handleChangeInstanceType={this.handleInstanceTypeSelected}
-                        handleChangedConfiguration={this.handleConfigurationChanged}
+                        instanceFamily={this.state.instanceFamily}
                         handleChangedConfig={this.handleChangedConfig}
-                        instanceType={this.state.instanceType}
+                        name={`Compute optimized`}
+                    />
+                    <MemoryOptimizedConfiguration
+                        instanceFamily={this.state.instanceFamily}
+                        handleChangedConfig={this.handleChangedConfig}
+                        name={`Memory optimized`}
+                    />
+                    <AcceleratedComputeConfiguration
+                        instanceFamily={this.state.instanceFamily}
+                        handleChangedConfig={this.handleChangedConfig}
+                        name={`GPU instance`}
+                    />
+
+                    <StorageOptimizedConfiguration
+                        instanceFamily={this.state.instanceFamily}
+                        handleChangedConfig={this.handleChangedConfig}
+                        name={`Storage optimized`}
                     />
                 </div>
-                <h4 style={{textTransform:"uppercase"}}>
-                    Configuration: {configTitles[cpuValue].replace(/([A-Za-z0-9].+\.)/g, '')}
+                <h4 style={{textTransform: "uppercase"}}>
+                    Configuration
                 </h4>
                 <InputRange
                     step={1}
-                    maxValue={this.state.configCpuValues.length - 1}
+                    maxValue={configCpuValues.length - 1}
                     minValue={0}
-                    value={cpuValue}
-                    onChange={this.handleCpuChange}
+                    value={cpuMemorySlider}
+                    onChange={this.handleCpuMemorySliderChange}
                 />
-                <DisplayConfig cpu={configCpuValues[cpuValue]} memory={configMemoryValues[cpuValue]}/>
+                <DisplayConfig cpu={cpuValue} memory={memoryValue}/>
+                <h4 style={{textTransform: "uppercase"}}>
+                    Prices : ${configPriceValues[priceSlider]}
+                </h4>
+                <InputRange
+                    step={1}
+                    maxValue={configPriceValues.length - 1}
+                    minValue={0}
+                    value={priceSlider}
+                    onChange={this.handlePriceSliderChange}
+                />
+                {/*
                 <StorageHeadingAndOptionsDisplay
                     storageValue={this.state.storageValue}
                     storageTypeEBSVolume={this.state.storageTypeEBSVolume}
                     handleSelected={this.handleStorageTypeEBSVolumeChange}
                 />
+
                 <InputRange
                     step={1}
                     maxValue={10}
@@ -134,12 +192,11 @@ class Calculator extends Component {
                     value={storageValue}
                     onChange={this.storageValueChange}
                 />
-                <AWSCostDisplay cpu={configCpuValues[cpuValue]}
-                                memory={configMemoryValues[cpuValue]}
-                                instanceType={configTitles[cpuValue]}
-                                storage={storageValue}
-                                storagePriceGBPerMonth={storagePriceGBPerMonth}
+                */}
+                <AWSInstanceDisplay awsResponseWithPrice={awsResponseWithPrice}
+                                price={configPriceValues[priceSlider]}
                 />
+                <small>for more information please visit <a href="https://aws.amazon.com/ec2/instance-types/">https://aws.amazon.com/ec2/instance-types/</a></small>
             </div>
         );
     }

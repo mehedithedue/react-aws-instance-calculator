@@ -1,37 +1,31 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
-import acceleratedConfiguration from '../../configurations/acceleratedConfiguration.json'
+import configuration from "../../configurations/initialCpuAndMemoryConfiguration.json"
 import BaseConfiguration from "./BaseConfiguration";
 
 class AcceleratedComputeConfiguration extends Component {
 
-    configuration = acceleratedConfiguration;
+    name = this.props.name;
+
+    configuration = configuration.acceleratedComputeConfiguration;
 
     handleSelected = (value) => {
-        this.props.handleChangeInstanceType(value);
-        this.props.handleChangedConfiguration('accelerated');
-        this.props.handleChangedConfig(this.configuration[value]);
+        this.props.handleChangedConfig(value, this.configuration);
     }
 
     render() {
-
         return (
             <BaseConfiguration
                 handleSelected={this.handleSelected}
-                active={this.props.active}
-                configuration={this.configuration}
-                instanceType={this.props.instanceType}
-                placeholder={`Accelerated Compute`}
+                active={this.props.instanceFamily === this.name}
+                name={this.name}
             />
         );
     }
 }
 
 AcceleratedComputeConfiguration.propTypes = {
-    active: PropTypes.bool.isRequired,
-    instanceType: PropTypes.string.isRequired,
-    handleChangeInstanceType: PropTypes.func.isRequired,
-    handleChangedConfiguration: PropTypes.func.isRequired,
+    instanceFamily: PropTypes.string.isRequired,
     handleChangedConfig: PropTypes.func.isRequired,
 };
 

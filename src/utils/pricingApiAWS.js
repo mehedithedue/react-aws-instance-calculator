@@ -15,25 +15,33 @@ const params = {
             "Field": "ServiceCode",
             "Value": "AmazonEC2"
         },
-        {
-            'Type': 'TERM_MATCH',
-            'Field': 'tenancy',
-            'Value': 'Shared'
-        },
+        // {
+        //     'Type': 'TERM_MATCH',
+        //     'Field': 'tenancy',
+        //     'Value': 'Shared'
+        // },
         {
             'Type': 'TERM_MATCH',
             'Field': 'preInstalledSw',
             'Value': 'NA'
         },
+        {
+            'Type': 'TERM_MATCH',
+            'Field': 'location',
+            'Value': 'US East (N. Virginia)'
+        },
+        {
+            'Type': 'TERM_MATCH',
+            'Field': 'operatingSystem',
+            'Value': 'Linux'
+        },
     ],
     "FormatVersion": "aws_v1",
     "NextToken": null,
-    "MaxResults": 1,
     "ServiceCode": 'AmazonEC2'
 };
 
-
-async function getAWSData(filterParam) {
+function structuredFilteredParam(filterParam){
 
     let filter = [
         {
@@ -43,8 +51,8 @@ async function getAWSData(filterParam) {
         },
         {
             'Type': 'TERM_MATCH',
-            'Field': 'instanceType',
-            'Value': filterParam.instanceType.toLowerCase()
+            'Field': 'instanceFamily',
+            'Value': filterParam.instanceFamily
         },
         {
             'Type': 'TERM_MATCH',
@@ -52,10 +60,16 @@ async function getAWSData(filterParam) {
             'Value': filterParam.memory + ' GiB'
         },
     ]
-    filterParam = {...params, Filters: [...params.Filters, ...filter]};
+
+    return {...params, Filters: [...params.Filters, ...filter]};
+
+}
+
+async function getAWSPrice(filterParam) {
 
     try {
-        let response =  await client.getProducts(filterParam);
+        let filterObject = structuredFilteredParam(filterParam);
+        let response =  await client.getProducts({...filterObject, "MaxResults": 1});
 
         return (response && response.PriceList && response.PriceList[0] && JSON.parse(response.PriceList[0])) || {}
 
@@ -64,4 +78,18 @@ async function getAWSData(filterParam) {
     }
 }
 
-export default getAWSData;
+
+async function getAWSPriceObjectList(filterParam) {
+
+    try {
+        let filterObject = structuredFilteredParam(filterParam);
+        let response =  await client.getProducts(filterObject);
+
+        return (response && response.PriceList) || {}
+
+    } catch (error) {
+        return error;
+    }
+}
+
+export {getAWSPrice, getAWSPriceObjectList};

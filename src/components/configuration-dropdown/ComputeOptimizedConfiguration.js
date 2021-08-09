@@ -1,37 +1,31 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
-import computeOptimizedConfiguration from '../../configurations/computeOptimizedConfiguration.json'
 import BaseConfiguration from "./BaseConfiguration";
+import configuration from "../../configurations/initialCpuAndMemoryConfiguration.json"
 
 class ComputeOptimizedConfiguration extends Component {
 
-    configuration = computeOptimizedConfiguration;
+    name = this.props.name;
+
+    configuration = configuration.computeOptimizedConfiguration;
 
     handleSelected = (value) => {
-        this.props.handleChangeInstanceType(value);
-        this.props.handleChangedConfiguration('compute');
-        this.props.handleChangedConfig(this.configuration[value]);
+        this.props.handleChangedConfig(value, this.configuration);
     }
 
     render() {
-
         return (
             <BaseConfiguration
                 handleSelected={this.handleSelected}
-                active={this.props.active}
-                configuration={this.configuration}
-                instanceType={this.props.instanceType}
-                placeholder={`Compute Optimized`}
+                active={this.props.instanceFamily === this.name}
+                name={this.name}
             />
         );
     }
 }
 
 ComputeOptimizedConfiguration.propTypes = {
-    active: PropTypes.bool.isRequired,
-    instanceType: PropTypes.string.isRequired,
-    handleChangeInstanceType: PropTypes.func.isRequired,
-    handleChangedConfiguration: PropTypes.func.isRequired,
+    instanceFamily: PropTypes.string.isRequired,
     handleChangedConfig: PropTypes.func.isRequired,
 };
 

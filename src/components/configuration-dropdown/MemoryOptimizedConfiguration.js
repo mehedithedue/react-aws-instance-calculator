@@ -1,36 +1,31 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
-import memoryOptimizedConfiguration from "../../configurations/memoryOptimizedConfiguration.json";
+import configuration from "../../configurations/initialCpuAndMemoryConfiguration.json"
 import BaseConfiguration from "./BaseConfiguration";
 
 class MemoryOptimizedConfiguration extends Component {
 
-    configuration = memoryOptimizedConfiguration;
+    name = this.props.name;
+
+    configuration = configuration.memoryOptimizedConfiguration;
 
     handleSelected = (value) => {
-        this.props.handleChangeInstanceType(value);
-        this.props.handleChangedConfiguration('compute');
-        this.props.handleChangedConfig(this.configuration[value]);
+        this.props.handleChangedConfig(value, this.configuration);
     }
 
     render() {
         return (
             <BaseConfiguration
                 handleSelected={this.handleSelected}
-                active={this.props.active}
-                configuration={this.configuration}
-                instanceType={this.props.instanceType}
-                placeholder={`Memory Optimized`}
+                active={this.props.instanceFamily === this.name}
+                name={this.name}
             />
         );
     }
 }
 
 MemoryOptimizedConfiguration.propTypes = {
-    active: PropTypes.bool.isRequired,
-    instanceType: PropTypes.string.isRequired,
-    handleChangeInstanceType: PropTypes.func.isRequired,
-    handleChangedConfiguration: PropTypes.func.isRequired,
+    instanceFamily: PropTypes.string.isRequired,
     handleChangedConfig: PropTypes.func.isRequired,
 };
 

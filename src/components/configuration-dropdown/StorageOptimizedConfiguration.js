@@ -1,37 +1,31 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
-import generalConfiguration from '../../configurations/storageOptimizedConfiguration.json';
+import configuration from "../../configurations/initialCpuAndMemoryConfiguration.json"
 import BaseConfiguration from "./BaseConfiguration";
 
 class StorageOptimizedConfiguration extends Component {
 
-    configuration = generalConfiguration;
+    name = this.props.name;
+
+    configuration = configuration.storageOptimizedConfiguration;
 
     handleSelected = (value) => {
-        this.props.handleChangeInstanceType(value);
-        this.props.handleChangedConfiguration('general');
-        this.props.handleChangedConfig(this.configuration[value]);
+        this.props.handleChangedConfig(value, this.configuration);
     }
 
     render() {
-
         return (
             <BaseConfiguration
                 handleSelected={this.handleSelected}
-                active={this.props.active}
-                configuration={this.configuration}
-                instanceType={this.props.instanceType}
-                placeholder={`Storage Optimized`}
+                active={this.props.instanceFamily === this.name}
+                name={this.name}
             />
         );
     }
 }
 
 StorageOptimizedConfiguration.propTypes = {
-    active: PropTypes.bool.isRequired,
-    instanceType: PropTypes.string.isRequired,
-    handleChangeInstanceType: PropTypes.func.isRequired,
-    handleChangedConfiguration: PropTypes.func.isRequired,
+    instanceFamily: PropTypes.string.isRequired,
     handleChangedConfig: PropTypes.func.isRequired,
 };
 
