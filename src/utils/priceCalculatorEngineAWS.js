@@ -55,12 +55,11 @@ export async function priceCalculationAWS(props) {
 export async function getPriceInstanceListFromAWS(props) {
 
     const filterParams = restructureFilteredParam(props);
-    console.log(filterParams);
 
     let responseObject = await getAWSPriceObjectList(filterParams);
     if (!responseObject) return {};
     let result = [];
-    let prices = [];
+    let prices = [0];
     for (const responseData of (responseObject || [])) {
         let response = JSON.parse(responseData);
         let resultPrice = (response.terms && getPriceFromTermsObject(response.terms)) || {}

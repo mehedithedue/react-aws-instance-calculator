@@ -8,7 +8,6 @@ import MemoryOptimizedConfiguration from "./configuration-dropdown/MemoryOptimiz
 import AcceleratedComputeConfiguration from "./configuration-dropdown/AcceleratedComputeConfiguration";
 import ComputeOptimizedConfiguration from "./configuration-dropdown/ComputeOptimizedConfiguration";
 import StorageOptimizedConfiguration from "./configuration-dropdown/StorageOptimizedConfiguration";
-import StorageHeadingAndOptionsDisplay from "./StorageHeadingAndOptionsDisplay";
 import storageOptionsConfiguration from "../configurations/storageOptionsConfiguration.json";
 import configuration from "../configurations/initialCpuAndMemoryConfiguration.json"
 import {getPriceInstanceListFromAWS} from "../utils/priceCalculatorEngineAWS";
@@ -31,7 +30,7 @@ class Calculator extends Component {
         instanceFamily: 'General purpose',
         storagePriceGBPerMonth: 0.088,
         storageTypeEBSVolume: "storage.gp3",
-        configPriceValues: [0, 1],
+        configPriceValues: [0],
         priceSlider: 0,
         awsResponseWithPrice: []
 
@@ -177,6 +176,7 @@ class Calculator extends Component {
                     minValue={0}
                     value={priceSlider}
                     onChange={this.handlePriceSliderChange}
+                    disabled={configPriceValues.length <= 1}
                 />
                 {/*
                 <StorageHeadingAndOptionsDisplay
