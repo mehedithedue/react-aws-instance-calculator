@@ -13,7 +13,7 @@ class BaseConfiguration extends Component {
         return (
             <button className={this.props.active ? 'active' : ''}
                     onClick={this.handleClicked}>
-                {this.props.name}
+                {this.props.label}
             </button>
         );
     }
@@ -22,6 +22,7 @@ class BaseConfiguration extends Component {
 BaseConfiguration.propTypes = {
     active: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
     handleSelected: PropTypes.func.isRequired,
 };
 

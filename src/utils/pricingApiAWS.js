@@ -32,6 +32,11 @@ const params = {
         },
         {
             'Type': 'TERM_MATCH',
+            'Field': 'capacitystatus',
+            'Value': 'Used'
+        },
+        {
+            'Type': 'TERM_MATCH',
             'Field': 'operatingSystem',
             'Value': 'Linux'
         },

@@ -19,6 +19,7 @@ class StorageOptimizedConfiguration extends Component {
                 handleSelected={this.handleSelected}
                 active={this.props.instanceFamily === this.name}
                 name={this.name}
+                label={this.props.label}
             />
         );
     }

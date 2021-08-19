@@ -19,6 +19,7 @@ class GeneralPurposeConfiguration extends Component {
                 handleSelected={this.handleSelected}
                 active={this.props.instanceFamily === this.name}
                 name={this.name}
+                label={this.props.label}
             />
         );
     }
@@ -27,6 +28,8 @@ class GeneralPurposeConfiguration extends Component {
 GeneralPurposeConfiguration.propTypes = {
     instanceFamily: PropTypes.string.isRequired,
     handleChangedConfig: PropTypes.func.isRequired,
+    name: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
 };
 
 export default GeneralPurposeConfiguration;

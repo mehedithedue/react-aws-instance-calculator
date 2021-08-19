@@ -133,27 +133,32 @@ class Calculator extends Component {
                         instanceFamily={this.state.instanceFamily}
                         handleChangedConfig={this.handleChangedConfig}
                         name={`General purpose`}
+                        label={`General purpose`}
                     />
                     <ComputeOptimizedConfiguration
                         instanceFamily={this.state.instanceFamily}
                         handleChangedConfig={this.handleChangedConfig}
                         name={`Compute optimized`}
+                        label={`Compute optimized`}
                     />
                     <MemoryOptimizedConfiguration
                         instanceFamily={this.state.instanceFamily}
                         handleChangedConfig={this.handleChangedConfig}
                         name={`Memory optimized`}
+                        label={`Memory optimized`}
                     />
                     <AcceleratedComputeConfiguration
                         instanceFamily={this.state.instanceFamily}
                         handleChangedConfig={this.handleChangedConfig}
                         name={`GPU instance`}
+                        label={`Accelerated Compute`}
                     />
 
                     <StorageOptimizedConfiguration
                         instanceFamily={this.state.instanceFamily}
                         handleChangedConfig={this.handleChangedConfig}
                         name={`Storage optimized`}
+                        label={`Storage optimized`}
                     />
                 </div>
                 <h4 style={{textTransform: "uppercase"}}>
@@ -171,8 +176,7 @@ class Calculator extends Component {
                     Prices : ${configPriceValues[priceSlider]}
                 </h4>
                 <InputRange
-                    step={1}
-                    maxValue={configPriceValues.length - 1}
+                    maxValue={configPriceValues.length === 1 ? 1 : configPriceValues.length - 1}
                     minValue={0}
                     value={priceSlider}
                     onChange={this.handlePriceSliderChange}

@@ -15,9 +15,9 @@
     "title": ["small", "medium", "large", "xlarge", "2xlarge", "3xlarge", "4xlarge", "5xlarge", "7xlarge", "6xlarge"]
   },
   "acceleratedComputeConfiguration": {
-    "vcpu": [ 4, 4, 4, 8, 8, 8, 8, 16, 16, 16, 16, 24, 32, 32, 32, 32, 32, 48, 64, 64, 64, 64, 64, 64, 96, 96, 96],
-    "memory": [ 61, 32, 30.5, 16, 32, 32, 122, 64, 64, 122, 244, 48, 32, 488, 128, 128, 244, 256, 64, 732, 192, 256, 488, 976, 96, 192, 384],
-    "title": ["small", "medium", "3xmedium", "3xmedium", "4xmedium", "5xmedium", "large", "xlarge", "2xlarge", "3xlarge", "6xlarge", "7xlarge", "8xmedium", "9xmedium", "10xmedium", "11xmedium", "8xlarge", "9xlarge", "10xlarge", "11xlarge", "12xlarge", "13xlarge", "14xlarge", "15xlarge", "16xlarge", "17xlarge", "18xlarge"]
+    "vcpu": [ 4, 4, 4, 8, 8, 8, 8, 8, 16, 16, 16, 16, 24, 32, 32, 32, 32, 32, 48, 64, 64, 64, 64, 64, 64, 96, 96, 96],
+    "memory": [ 61, 32, 30.5, 16, 32, 32, 1152, 122, 64, 64, 122, 244, 48, 32, 488, 128, 128, 244, 256, 64, 732, 192, 256, 488, 976, 96, 192, 384],
+    "title": ["small", "medium", "3xmedium", "p4d24xlarge","3xmedium", "4xmedium", "5xmedium", "large", "xlarge", "2xlarge", "3xlarge", "6xlarge", "7xlarge", "8xmedium", "9xmedium", "10xmedium", "11xmedium", "8xlarge", "9xlarge", "10xlarge", "11xlarge", "12xlarge", "13xlarge", "14xlarge", "15xlarge", "16xlarge", "17xlarge", "18xlarge"]
   },
   "storageOptimizedConfiguration": {
     "vcpu": [4, 4, 8, 8, 8, 16, 16, 32, 96],
