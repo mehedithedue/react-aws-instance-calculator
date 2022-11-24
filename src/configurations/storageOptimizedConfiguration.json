@@ -1,0 +1,149 @@
+{
+  "I3": {
+    "title": [
+      "i3.large",
+      "i3.xlarge",
+      "i3.2xlarge",
+      "i3.4xlarge",
+      "i3.8xlarge",
+      "i3.16xlarge",
+      "i3.metal"
+    ],
+    "vcpu": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      72
+    ],
+    "memory": [
+      15.25,
+      30.5,
+      61,
+      122,
+      244,
+      488,
+      512
+    ]
+  },
+  "I3en": {
+    "title": [
+      "i3en.large",
+      "i3en.xlarge",
+      "i3en.2xlarge",
+      "i3en.3xlarge",
+      "i3en.6xlarge",
+      "i3en.12xlarge",
+      "i3en.24xlarge",
+      "i3en.metal"
+    ],
+    "vcpu": [
+      2,
+      4,
+      8,
+      12,
+      24,
+      48,
+      96,
+      96
+    ],
+    "memory": [
+      16,
+      32,
+      64,
+      96,
+      192,
+      384,
+      768,
+      768
+    ]
+  },
+  "D2": {
+    "title": [
+      "d2.xlarge",
+      "d2.2xlarge",
+      "d2.4xlarge",
+      "d2.8xlarge"
+    ],
+    "vcpu": [
+      4,
+      8,
+      16,
+      36
+    ],
+    "memory": [
+      30.5,
+      61,
+      122,
+      244
+    ]
+  },
+  "D3": {
+    "title": [
+      "d3.xlarge",
+      "d3.2xlarge",
+      "d3.4xlarge",
+      "d3.8xlarge"
+    ],
+    "vcpu": [
+      4,
+      8,
+      16,
+      32
+    ],
+    "memory": [
+      32,
+      64,
+      128,
+      256
+    ]
+  },
+  "D3en": {
+    "title": [
+      "d3en.xlarge",
+      "d3en.2xlarge",
+      "d3en.4xlarge",
+      "d3en.6xlarge",
+      "d3en.8xlarge",
+      "d3en.12xlarge"
+    ],
+    "vcpu": [
+      4,
+      8,
+      16,
+      24,
+      32,
+      48
+    ],
+    "memory": [
+      16,
+      32,
+      64,
+      96,
+      128,
+      192
+    ]
+  },
+  "H1": {
+    "title": [
+      "h1.2xlarge",
+      "h1.4xlarge",
+      "h1.8xlarge",
+      "h1.16xlarge"
+    ],
+    "vcpu": [
+      8,
+      16,
+      32,
+      64
+    ],
+    "memory": [
+      32,
+      64,
+      128,
+      256
+    ]
+  }
+}
